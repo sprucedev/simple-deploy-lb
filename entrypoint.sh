@@ -1,8 +1,9 @@
 #!/bin/bash
 
-INIT="/etc/init.d/haproxy"
+HAPROXY="/usr/sbin/haproxy"
 CONF_PATH="/etc/haproxy/haproxy.cfg"
 CONF_D="$CONF_PATH.d"
+PIDFILE="/var/run/haproxy.pid"
 
 export HOST_RE='simple-deploy-'
 
@@ -13,10 +14,10 @@ function regenerate {
 }
 
 regenerate > "$CONF_PATH"
-$INIT start
+$HAPROXY -D -f "$CONF_PATH" -p "$PIDFILE"
 
 while true; do
   inotifywait -e close_write /etc/hosts
   regenerate > "$CONF_PATH"
-  $INIT reload
+  kill -s SIGHUP "$(cat "$PIDFILE")"
 done
