@@ -4,7 +4,7 @@ INIT="/etc/init.d/haproxy"
 CONF_PATH="/etc/haproxy/haproxy.cfg"
 CONF_D="$CONF_PATH.d"
 
-export HOST_RE='sdeploy-'
+export HOST_RE='simple-deploy-'
 
 function regenerate {
   for filename in $(ls "$CONF_D"); do
