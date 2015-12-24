@@ -4,7 +4,7 @@ HAPROXY="/usr/sbin/haproxy"
 CONF_PATH="/etc/haproxy/haproxy.cfg"
 CONF_D="$CONF_PATH.d"
 PIDFILE="/var/run/haproxy.pid"
-HAPROXY_START="$HAPROXY" -D -f "$CONF_PATH" -p "$PIDFILE"
+HAPROXY_START=("$HAPROXY" -D -f "$CONF_PATH" -p "$PIDFILE")
 
 export HOST_RE='simple-deploy-'
 
