@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#test
 HAPROXY="/usr/sbin/haproxy"
 CONF_PATH="/etc/haproxy/haproxy.cfg"
 CONF_D="$CONF_PATH.d"
